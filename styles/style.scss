@@ -1,0 +1,199 @@
+:root {
+    --in-stock-color: #25c368;
+}
+
+// Taken from the website
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    // CSS grids are objectively better, but I was told to use flex instead
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+
+    display: flex;
+    flex-wrap: wrap;
+
+    /* Justify to center for better viewing experience */
+    justify-content: center; 
+    /* Don't set a max-width (unless you really want to constrain the view box) */
+    /* margin: 0 auto;
+    
+    max-width: 1344px; */
+}
+
+.card {   
+    display: flex;
+    flex-direction: column;
+
+    max-width: 420px;
+
+    margin: 0;
+    /* 18px => 1.125em
+       22px => 1.375em */
+    padding: 1.125em 1.375em;
+
+    position: relative;
+
+    &__ribbons {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        margin-top: 1.125em; /* 18px => 1.125em */
+        margin-right: 0.625em; /* 10px => 0.625em */
+    }
+
+    &__ribbon {
+        display: flex;
+        flex-direction: column;
+        /* This should make the ribbon more or less a perfect circle */
+        padding: 1.522em 1em;
+
+        border-radius: 50%;
+        z-index: 1;
+        position: relative;
+
+        text-transform: uppercase;
+        font-size: 0.5625em; // 9px => 0.5625em
+        text-align: center;
+        font-weight: 600;
+        
+        &--free-delivery {
+            background-color: #26a8d6;
+            color: #fff;
+
+            &::before {
+                display: block;
+                width: calc(1em * calc(35 / 9));
+                height: 2em;
+                background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAASCAYAAADR/2dRAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACAElEQVRIx82VMWhUQRCGPx8PkSBHsJCgx5FCwsVCj3CJUUMIBE0hiKCllUmvnbaCjY2dlY0PsYgQ7QSxsFFJERDlEkOKgBYhhWgQDJeY+Nv8wrpe7uXuIPjD8GZ3Z/YNszP/7JNEE4wC+2kd68Bb4AhwJjr7ArwGtv7xkrSTjKkzDEjKdjj7KKkY/zMFUqACVIFCEGc/naHLdwMsA2vWC0AZeAacDjOUejFn6XNQp+xQBw7QOc45IIAEeOUSuAXc2c0zISmVVJE0JemBpHeSfu7ymUYkPbZeiu4tSfomaUPSifCZEmdhCBh0Zo55vxE2g/S3i8/AdSCzDAJbKfALWLA8tHG3g6racAgodvDzzF0U4pC/FeAi8PRPAR8HBhq08VfghaUnCOxwi8GM5Zz3hQX8AVhyQMPAWfNDD3uIsC7qJqp7wGVgkj1Gwn+EJKfiN9u8tw6sturUrEVrwEkzadzaNXdcF7DiAjwY2RWCjlkHbgKzrtER4G5w91GgN4/0thuQ2VVJ94P1jKTzOQR4KZpTmfdCvM8jr9loHHx3+qdM8WvAS8+ZJybLGKvmsivu0sRUMQM8Dzq2lpeZRnJN0qdg/UbS7RyfG5Lmg/W89/6yayeYkqQfkqY9r7YlVXN8yp5DmaRH1suxXdLmXBm3XgQueOI3wyIw4SLvtr4YG/0GtBac7uYjIIMAAAAASUVORK5CYII=) transparent no-repeat;
+                background-size: contain;
+    
+                content: "";
+            }
+        }
+    }
+
+    &__body {
+        flex-grow: 1;
+        color: #666;
+        text-align: center;
+        
+        &-description {
+            line-height: calc(1em * calc(22 / 14)); // 22px => 1.375em
+            font-size: 0.875em; // 14px => 0.875em, set globally for the website, for simplicity leaving global font size alone
+            margin: 0 0 calc(1em * calc(16 / 14)) 0; // 16px => 1em;
+        }
+    }
+
+    &__footer {
+        // This is simplified from original, the original was supposed to have
+        // a rating next to availability, but it isn't there...
+        &-availability {
+            height: calc(1em * calc(30 / 13)); // 30px => 1.875em
+            font-size: 0.8125em; // 13px => 0.8125em
+            margin: 0 0 calc(1em * calc(10 / 13)) 0; // 10px => 0.625em
+            text-align: right;
+            text-transform: uppercase;
+            font-weight: 600;
+
+            &--has-stock {
+                color: var(--in-stock-color);
+            }
+        }
+
+        &-basket-box {
+            display: flex;
+
+            justify-content: space-between;
+
+            &-price {
+                color: #26a8d6;
+                font-size: 1.25em; // 20px => 1.25em
+                padding-top: 0.4em; // 8px => 0.4em (z 20px)
+            }
+
+            &-button-wrapper {
+                padding-top: 0.1875em; /* 3px => 0.1875em */
+            }
+        }
+    }
+
+    &__product-link {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+
+        font-size: 1em; /* the website says 16px => 1em */
+        color: #29166f;
+
+        margin-bottom: 0.875em; /* 14px => 0.875em */
+
+        &-name {
+            margin: 0;
+            line-height: 1.5em; /* 24px => 1.5em */
+        }
+
+        &-image {
+            display: block;
+            width: 12.0625em; /* 193px => 12.0625em */
+            height: 12.0625em;
+            object-fit: contain;
+    
+            margin: 0 auto 0.125em auto; /* 2px => 0.125em */
+        }
+    }
+
+    &__button {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+    
+        /* 35px => ???em; 13 is a prime number >:) */
+        line-height: calc(1em * calc(35 / 13));
+        height: calc(1em * calc(35 / 13));
+    
+        border-radius: calc(1em * calc(4 / 13)); /* 4px => ???em */
+    
+        text-decoration: none;
+        text-transform: uppercase;
+    
+        font-size: 0.8125em; /* 13px => 0.8125em */
+        font-weight: 700;
+        text-align: center;
+        color: #fff;
+        /* 28px, 13px => ???em */
+        padding: 0 calc(1em * calc(28 / 13)) 0 calc(1em * calc(19 / 13)); 
+    
+        &--has-stock {
+            background-color: var(--in-stock-color);
+        }
+    
+        &:after {
+            position: absolute;
+            right: 0;
+            top: 0;
+
+            margin-right: calc(1em * calc(15 / 13)); /* 15px => ???em */
+            margin-top: 1em;
+
+            display: block;
+            width: calc(1em * calc(6 / 13)); /* the image is 6x9px */
+            height: calc(1em * calc(9 / 13));
+
+            background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhLS0gQ3JlYXRlZCB3aXRoIElua3NjYXBlIChodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy8pIC0tPgoKPHN2ZwogICB3aWR0aD0iMS41NTQzNTM3bW0iCiAgIGhlaWdodD0iMi4zMzY2MzU2bW0iCiAgIHZpZXdCb3g9IjAgMCAxLjU1NDM1MzcgMi4zMzY2MzU2IgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJzdmc1IgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICB4bWxuczppbmtzY2FwZT0iaHR0cDovL3d3dy5pbmtzY2FwZS5vcmcvbmFtZXNwYWNlcy9pbmtzY2FwZSIKICAgeG1sbnM6c29kaXBvZGk9Imh0dHA6Ly9zb2RpcG9kaS5zb3VyY2Vmb3JnZS5uZXQvRFREL3NvZGlwb2RpLTAuZHRkIgogICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiAgIHhtbG5zOnN2Zz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxzb2RpcG9kaTpuYW1lZHZpZXcKICAgICBpZD0ibmFtZWR2aWV3NyIKICAgICBwYWdlY29sb3I9IiNmZmZmZmYiCiAgICAgYm9yZGVyY29sb3I9IiM5OTk5OTkiCiAgICAgYm9yZGVyb3BhY2l0eT0iMSIKICAgICBpbmtzY2FwZTpzaG93cGFnZXNoYWRvdz0iMCIKICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMCIKICAgICBpbmtzY2FwZTpwYWdlY2hlY2tlcmJvYXJkPSIwIgogICAgIGlua3NjYXBlOmRlc2tjb2xvcj0iI2QxZDFkMSIKICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0ibW0iCiAgICAgc2hvd2dyaWQ9ImZhbHNlIgogICAgIGlua3NjYXBlOnpvb209IjAuNzYxNjc5MjkiCiAgICAgaW5rc2NhcGU6Y3g9IjI5Mi43NzQxNCIKICAgICBpbmtzY2FwZTpjeT0iNTYxLjkxNjI5IgogICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTkyMCIKICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSIxMDE5IgogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy15PSIwIgogICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ibGF5ZXIxIiAvPjxkZWZzCiAgICAgaWQ9ImRlZnMyIiAvPjxnCiAgICAgaW5rc2NhcGU6bGFiZWw9IkxheWVyIDEiCiAgICAgaW5rc2NhcGU6Z3JvdXBtb2RlPSJsYXllciIKICAgICBpZD0ibGF5ZXIxIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEwLjg5MjAwMywtMzguNjcwODMyKSI+PHBhdGgKICAgICAgIHN0eWxlPSJmaWxsOiNmZmZmZmY7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjAuMjY0NTgzcHg7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW9wYWNpdHk6MSIKICAgICAgIGQ9Im0gLTEwLjg5MjAwMyw0MC43MzI5MTggMC45ODI1MDYyLC0wLjg2NDA5NCAtMC45ODI1MDYyLC0wLjg2NDA5NCAwLjQyMzk0OSwtMC4zMzM4OTkgMS4xMzA0MDQ1LDEuMTk3OTkzIC0xLjEzMDQwNDUsMS4xMzg2NDEgeiIKICAgICAgIGlkPSJwYXRoNTA4IgogICAgICAgc29kaXBvZGk6bm9kZXR5cGVzPSJjY2NjY2NjIgogICAgICAgaW5rc2NhcGU6ZXhwb3J0LWZpbGVuYW1lPSJwYXRoNTA4LnN2ZyIKICAgICAgIGlua3NjYXBlOmV4cG9ydC14ZHBpPSI5NiIKICAgICAgIGlua3NjYXBlOmV4cG9ydC15ZHBpPSI5NiIgLz48L2c+PC9zdmc+Cg==") transparent no-repeat;
+            background-size: contain;
+            content: ""
+        }
+    }
+}
