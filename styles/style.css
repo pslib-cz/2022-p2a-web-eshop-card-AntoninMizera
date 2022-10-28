@@ -101,17 +101,15 @@ html, body {
 .card__footer-basket-box {
   display: flex;
   justify-content: space-between;
+  /*&-button-wrapper {
+                padding-top: 0.1875em; /* 3px => 0.1875em * /
+            }*/
 }
 
 .card__footer-basket-box-price {
   color: #26a8d6;
   font-size: 1.25em;
   padding-top: 0.4em;
-}
-
-.card__footer-basket-box-button-wrapper {
-  padding-top: 0.1875em;
-  /* 3px => 0.1875em */
 }
 
 .card__product-link {
@@ -142,12 +140,8 @@ html, body {
 }
 
 .card__button {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  /* 35px => ???em; 13 is a prime number >:) */
-  line-height: calc(1em * calc(35 / 13));
-  height: calc(1em * calc(35 / 13));
+  display: flex;
+  align-items: center;
   border-radius: calc(1em * calc(4 / 13));
   /* 4px => ???em */
   text-decoration: none;
@@ -158,7 +152,8 @@ html, body {
   text-align: center;
   color: #fff;
   /* 28px, 13px => ???em */
-  padding: 0 calc(1em * calc(28 / 13)) 0 calc(1em * calc(19 / 13));
+  padding: 0.77em calc(1em * calc(19 / 13));
+  gap: 0.5em;
 }
 
 .card__button--has-stock {
@@ -166,12 +161,6 @@ html, body {
 }
 
 .card__button:after {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-right: calc(1em * calc(15 / 13));
-  /* 15px => ???em */
-  margin-top: 1em;
   display: block;
   width: calc(1em * calc(6 / 13));
   /* the image is 6x9px */
