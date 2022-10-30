@@ -100,7 +100,6 @@ html, body {
         // This is simplified from original, the original was supposed to have
         // a rating next to availability, but it isn't there...
         &-availability {
-            height: calc(1em * calc(30 / 13)); // 30px => 1.875em
             font-size: 0.8125em; // 13px => 0.8125em
             margin: 0 0 calc(1em * calc(10 / 13)) 0; // 10px => 0.625em
             text-align: right;
