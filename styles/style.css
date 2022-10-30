@@ -2,10 +2,6 @@
   --in-stock-color: #25c368;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 html, body {
   margin: 0;
   padding: 0;
