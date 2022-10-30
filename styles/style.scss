@@ -51,8 +51,11 @@ html, body {
     &__ribbon {
         display: flex;
         flex-direction: column;
-        /* This should make the ribbon more or less a perfect circle */
-        padding: 1.522em 1em;
+        width: 6.2em;
+        height: 6.2em;
+
+        justify-content: center;
+        align-items: center;
 
         border-radius: 50%;
         z-index: 1;
