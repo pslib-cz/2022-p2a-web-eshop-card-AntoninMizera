@@ -96,12 +96,12 @@ html, body {
 .card__footer-basket-box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .card__footer-basket-box-price {
   color: #26a8d6;
   font-size: 1.25em;
-  padding-top: 0.4em;
 }
 
 .card__product-link {
